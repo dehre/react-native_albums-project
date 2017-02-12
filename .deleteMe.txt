@@ -1,0 +1,40 @@
+import React, {Component} from "react";
+import {Text, View} from "react-native";
+import axios from "axios";
+
+import AlbumDetail from "./AlbumDetail";
+
+export default class AlbumList extends Component {
+
+  getAlbums(){
+    // Make a request for a user with a given ID
+    axios.get('http://rallycoding.herokuapp.com/api/music_albums')
+      .then(function (response) {
+        return response.data;
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
+  // componentDidMount(){
+  //   if(getAlbums().length>0){
+  //     console.log('componentDidMount calledd');
+  //     // return getAlbums().map((album)=>{
+  //     //   return <AlbumDetail key={album.url} data={album}/>
+  //     // });
+  //   }
+  // }
+
+  render(){
+    return(
+      <View>
+        <Text>AlbumList</Text>
+        {componentDidMount()}
+      </View>
+    )
+  }
+
+}
+
+const styles = {}
