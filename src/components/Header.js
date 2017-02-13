@@ -16,7 +16,7 @@ export default class Header extends Component {
 
 const styles = {
   viewStyle: {
-    backgroundColor: '#b1bbcc',
+    backgroundColor: '#f8f8f8',
     justifyContent: 'center',
     alignItems: 'center',
     height: 60,
