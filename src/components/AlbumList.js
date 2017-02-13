@@ -1,17 +1,12 @@
 import React, {Component} from "react";
-import {Text, View} from "react-native";
+import {View} from "react-native";
 import axios from "axios";
 
 import AlbumDetail from "./AlbumDetail";
 
 export default class AlbumList extends Component {
 
-  constructor(props){
-    super(props);
-    this.state= {
-      albums: []
-    }
-  }
+  state = { albums:[] };
 
   componentWillMount(){
     axios.get('https://rallycoding.herokuapp.com/api/music_albums')
@@ -22,18 +17,18 @@ export default class AlbumList extends Component {
       })
   }
 
-  componentDidUpdate(prevProps,prevState){
-    if(this.state.albums.length>0){
-      console.log('there are some albums', this.state.albums);
-    } else {
-      console.log('no albums yet')
-    }
+  renderAlbums(){
+    return this.state.albums.map((album)=>{
+      return (
+        <AlbumDetail key={album.title} album={album}/>
+      )
+    })
   }
 
   render(){
     return(
       <View>
-        <Text>AlbumList</Text>
+        {this.renderAlbums()}
       </View>
     )
   }
